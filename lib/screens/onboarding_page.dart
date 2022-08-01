@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:food_recipe_app/screens/home_page.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -13,12 +14,12 @@ class OnboardingPage extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: _buildContent(),
+        body: _buildContent(context),
       ),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -61,15 +62,14 @@ class OnboardingPage extends StatelessWidget {
         ),
         // const  SizedBox(height: 399,),
         Container(
-          margin: const EdgeInsets.only(left: 64, right: 64, bottom:82),
+          margin: const EdgeInsets.only(left: 64, right: 64, bottom: 82),
           child: Column(children: [
             const AutoSizeText(
-      
               'Let\'s \n Cooking',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: 66.0,
+                fontSize: 70.0,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
                 fontStyle: FontStyle.normal,
@@ -82,33 +82,32 @@ class OnboardingPage extends StatelessWidget {
               'Find best recipe for cooking',
               style: TextStyle(
                 color: Color(0xABffffff),
-                fontSize: 20.0,
+                fontSize: 22.0,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Poppins',
               ),
             ),
             const SizedBox(
-              height: 40.0,
+              height: 49.0,
             ),
             Container(
-              margin:
-                  const EdgeInsets.only( left: 21.0, right: 20.0),
+              margin: const EdgeInsets.only(left: 74.0, right: 73.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20),
                   // maximumSize: Size(206, 44),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(18)),
                   primary: Colors.deepOrange,
                 ),
-                onPressed: () {},
+                onPressed: () => HomePage.show(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
                       'Start cooking',
                       style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 22,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),
                     ),
