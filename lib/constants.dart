@@ -12,6 +12,13 @@ const kAutoSizeText2 = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.w400,
 );
+const kAutoSizeText3 = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 70.0,
+  fontWeight: FontWeight.w600,
+  color: Colors.white,
+  fontStyle: FontStyle.normal,
+);
 
 const kHomeText = TextStyle(
     color: Color(0xff303030),

@@ -62,13 +62,7 @@ class OnboardingPage extends StatelessWidget {
         const AutoSizeText(
              'Let\'s \n Cooking',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 70.0,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-            fontStyle: FontStyle.normal,
-          ),
+          style: kAutoSizeText3,
         ),
         const SizedBox(
           height: 24,
@@ -85,7 +79,7 @@ class OnboardingPage extends StatelessWidget {
         const SizedBox(
           height: 49.0,
         ),
-        Container(
+        ReusableContainer(
           margin: const EdgeInsets.only(left: 74.0, right: 73.0),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -115,10 +109,6 @@ class OnboardingPage extends StatelessWidget {
           ),
         )
       ]),
-    
-      //  const ReusesableContainer(text: 'Let\'s \n Cooking',
-      //   margin:EdgeInsets.only(  bottom: 60) ,
-      //  ),
     )],
     
     );
