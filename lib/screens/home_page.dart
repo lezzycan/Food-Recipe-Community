@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food_recipe_app/constants.dart';
+import 'package:food_recipe_app/model/food.dart';
 
+import '../common widgets/constants.dart';
 import '../common widgets/home_container_contents.dart';
-import '../common widgets/reusable_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key})
@@ -20,20 +22,29 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildHomeContent(),
+      extendBody: true,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: _buildHomeContent(),
+      ),
     );
   }
 
   Widget _buildHomeContent() {
     return SafeArea(
-      child: Column(
+      bottom: false,
+      child: ListView(
+        primary: true,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ReusableContainer(
-                margin: const EdgeInsets.fromLTRB(62, 15, 146, 20),
-                child: const Text(
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 12),
+                child: Text(
                   'Find best recipes \n for cooking',
                   style: kHomeText,
                 ),
@@ -42,7 +53,7 @@ class HomePage extends StatelessWidget {
                 height: 8.0,
               ),
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(12),
                 child: SingleChildScrollView(
                   child: const TextField(
                     decoration: InputDecoration(
@@ -60,14 +71,13 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-              margin: EdgeInsets.only(left: 17),
-              height: 300,
-              //   color: Colors.blue,
+          SizedBox(
+              height: 350,
+              width: double.infinity,
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.fromLTRB(3, 0, 20, 0),
+                    margin: const EdgeInsets.only(left: 12),
                     child: Row(
                       children: [
                         Text(
@@ -98,45 +108,143 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  SizedBox(
-                    height: 220,
-                    child: ListView(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        ContainerContents(
-                          width: 320,
-                          image: AssetImage('images/image 4.png'),
-                        ),
-                        SizedBox(
-                          width: 22,
-                        ),
-                        ContainerContents(
-                          width: 274,
-                          image: AssetImage('images/image 6.png'),
-                        ),
-                      ],
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 0),
+                      height: 284,
+                      width: double.infinity,
+                      child: ListView.builder(
+                        itemCount: trendingNow.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(12, 0, 0, 10),
+                                height: 254,
+                                width: 320,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        trendingNow[index].foodBackground),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                child: Column(
+                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  // crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 58,
+                                          height: 38,
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 12.0, vertical: 15.0),
+                                          alignment: Alignment.center,
+                                          padding: const EdgeInsets.fromLTRB(
+                                              4, 8, 4, 8),
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Text(
+                                            trendingNow[index].foodRating,
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 12.0, vertical: 15.0),
+                                          //    alignment: Alignment.center,
+                                          child: Icon(Icons.add_alarm),
+                                          decoration: BoxDecoration(
+                                            color: Constants.kWhiteColor,
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            vertical: 30),
+                                        padding: const EdgeInsets.all(10.0),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                        ),
+                                        child: const Icon(
+                                          Icons.play_arrow,
+                                          color: Colors.white,
+                                          size: 30,
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Opacity(
+                                            opacity: 0.0, child: Text('Wake')),
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(right: 10),
+                                          padding: const EdgeInsets.all(8.0),
+                                          decoration: BoxDecoration(
+                                              color: const Color(0xAa303030),
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          //  alignment: Alignment.centerRight,
+                                          child: Text(
+                                            trendingNow[index].foodDuration,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(12, 0, 0, 10),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      trendingNow[index].foodTitle,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'How to make skushi at home',
-                        style: kHomeText.copyWith(fontSize: 16),
-                      ),
-                      Spacer(),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                        child: Text(
-                          'How to make sandwich',
-                          style: kHomeText.copyWith(fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               )),
         ],

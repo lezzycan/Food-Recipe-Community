@@ -1,73 +1,15 @@
 import "package:flutter/material.dart";
 
- Column(children: [],)
-          Container(
-            height: 322,
-            margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                     Text('Trending now 🔥',
-                        style: kHomeText2,
-                            ),
-                    InkWell(
-                      onTap: () {},
-                      child: Row(
-                        children: const [
-                          Text('See all',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffE23E3E))),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: Color(0xFFE23E3E),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-               
-                 SizedBox(
-                  height: 16,
-                ),
-               Row(
-                 children: const [
-                  Expanded(child: ContainerContent(image: 'images/image 4.png' )),
-                  SizedBox(width: 16),
-                   ContainerContent(image:'images/image 6.png', width: 150.0,),
-                 ],
-               ),
-               
-              ],
-            ),
-          ),
-          
-        ],
-      ),
-    );
-  }
-
-  
-    
- 
-}
-
 class ContainerContent extends StatelessWidget {
-  const ContainerContent({ Key? key , this.image, this.width}) : super(key: key);
+  const ContainerContent({Key? key, this.image, this.width}) : super(key: key);
 
   final String? image;
   final double? width;
-  
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-     // margin: EdgeInsets.only(left: 12.0),
+    return Container(
+      // margin: EdgeInsets.only(left: 12.0),
       decoration: BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
@@ -145,3 +87,5 @@ class ContainerContent extends StatelessWidget {
         ],
       ),
     );
+  }
+}
